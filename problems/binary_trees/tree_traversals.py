@@ -1,3 +1,4 @@
+from typing import List
 
 class BinaryTreeNode():
     def __init__(self, data='A', left=None, right=None):
@@ -17,6 +18,44 @@ def tree_traversal(root):
         #print("Inorder: %s" % root.data)
         tree_traversal(root.right) 
         print("Postorder: %s" % root.data)
+
+# Recursive implementation
+# Time: O(n) Space: O(h) b/c call stack -> O(n) if skewed, O(logn) if complete
+def preorder_traversal(tree: BinaryTreeNode) -> List[int]:
+    result = []
+
+    def traverse(root):
+        if root:
+            result.append(root.data)
+            traverse(root.left)
+            traverse(root.right)
+
+    traverse(tree)
+    return result
+
+def inorder_traversal(tree: BinaryTreeNode) -> List[int]:
+    result = []
+
+    def traverse(root):
+        if root:
+            traverse(root.left)
+            result.append(root.data)
+            traverse(root.right)
+
+    traverse(tree)
+    return result
+
+def postorder_traversal(tree: BinaryTreeNode) -> List[int]:
+    result = []
+
+    def traverse(root):
+        if root:
+            traverse(root.left)
+            traverse(root.right)
+            result.append(root.data)
+
+    traverse(tree)
+    return result
 
 def construct_tree():
     D = BinaryTreeNode('D')
@@ -45,9 +84,13 @@ def construct_tree():
 
 def main():
     root = construct_tree()
-    tree_traversal(root)
-    # Preorder: ABCDEFGHIJKLMNOP
-    # Inorder: DCEBFHGAJKLMKNIOP
-    # Postorder: DECHGFBMLNKJPOIA
+    # tree_traversal(root)
+    print("# Preorder: ABCDEFGHIJKLMNOP")
+    print("# Inorder: DCEBFHGAJKLMKNIOP")
+    print("# Postorder: DECHGFBMLNKJPOIA")
+    print(preorder_traversal(root))
+    print(inorder_traversal(root))
+    print(postorder_traversal(root))
+
 if __name__ == '__main__':
     main()
