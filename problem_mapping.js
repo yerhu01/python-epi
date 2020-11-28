@@ -10,7 +10,7 @@ problem_mapping = {
                 "total": 10001
             },
             "Python: count_bits.py": {
-                "passed": 0,
+                "passed": 10001,
                 "total": 10001
             }
         },
@@ -1308,7 +1308,7 @@ problem_mapping = {
                 "total": 314
             },
             "Python: search_first_key.py": {
-                "passed": 0,
+                "passed": 314,
                 "total": 314
             }
         },

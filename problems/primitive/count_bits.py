@@ -1,7 +1,9 @@
+from test_framework import generic_test
+
 # Count the number of bits set to 1
 
 # O(n) where n is number of bits to represent x
-def count_bits(x):
+def count_bits(x: int) -> int:
     num_bits = 0
     while x:
         num_bits += x & 1
@@ -17,3 +19,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    exit(
+        generic_test.generic_test_main('count_bits.py', 'count_bits.tsv',
+                                       count_bits))
