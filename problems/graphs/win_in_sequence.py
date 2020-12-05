@@ -2,6 +2,9 @@ import collections
 
 MatchResult = collections.namedtuple('MatchResult', ('winning_team',
                                                      'losing_team'))
+
+# Time: O(|E|) ie. # of match results
+# Space: O(|E|)
 def can_team_a_beat_team_b(matches, team_a, team_b):
     def build_graph():
         graph = collections.defaultdict(set)
