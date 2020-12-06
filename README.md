@@ -1,7 +1,9 @@
 # Progress on EPI problems using Python
 
 To run:
+
 $ cd problems
+
 $ python3 -m package.script
 
 ### Contents:
