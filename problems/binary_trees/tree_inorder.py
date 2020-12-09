@@ -9,7 +9,7 @@ def inorder_traversal(tree: BinaryTreeNode) -> List[int]:
     pass
 
 # Recursive Implementation
-# Space: O(n) Time: O(h)  where h is n if skewed tree, logn if complete
+# Time: O(n) Space: O(h)  where h is n if skewed tree, logn if complete
 def inorder_traversalr(tree: BinaryTreeNode) -> List[int]:
     def traverse(root):
         if root:
