@@ -10,25 +10,21 @@ from test_framework import generic_test
 # Space: O(k) additional storage for heap
 def merge_sorted_arrays(sorted_arrays: List[List[int]]) -> List[int]:
     min_heap: List[Tuple[int, int]] = []
-    sorted_arrays_iters = [iter(l) for l in sorted_arrays]
+    iters = [iter(l) for l in sorted_arrays]
 
-    for i, it in enumerate(sorted_arrays_iters):
-        first_item = next(it, None)
-        if first_item is not None:
-            heapq.heappush(min_heap, (first_item, i))
+    # Initialize heap with first val of all arrays
+    for i, it in enumerate(iters):
+        val = next(it, None)
+        if val is not None:
+            heapq.heappush(min_heap, (val, i))
 
     result = []
     while min_heap:
-        # Remove min and put in results
-        smallest_item, smallest_array_i = heapq.heappop(min_heap)
-        smallest_array_iter = sorted_arrays_iters[smallest_array_i]
-        result.append(smallest_item)
-
-        # insert next element into heap
-        next_item = next(smallest_array_iter, None)
-        # Make sure to use is not for checking None
-        if next_item is not None:
-            heapq.heappush(min_heap, (next_item, smallest_array_i))
+        smallest, i = heapq.heappop(min_heap)
+        result.append(smallest)
+        next_val = next(iters[i], None)
+        if next_val is not None:
+            heapq.heappush(min_heap, (next_val, i))
     return result    
 
 # Brute force (not implemented)
