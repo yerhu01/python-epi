@@ -7,11 +7,10 @@ import itertools
 #     since lookup is O(1)
 # Space: O(k)
 def top_k(k, stream):
-    # min_heap = [ (len(s), s) for s in stream[:k] ] # for list of strings
-    # for if stream is an actual stream of strings instead of list
+    # min_heap = [ (len(s), s) for s in stream[:k] ] 
     min_heap = [(len(s), s) for s in itertools.islice(stream, k)]
     heapq.heapify(min_heap)
-    for item in stream:
+    for item in itertools.islice(stream, k, len(stream)):
         heapq.heappushpop(min_heap, (len(item), item))
     return [ entry[1] for entry in heapq.nsmallest(k, min_heap)]
     
