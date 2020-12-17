@@ -9,13 +9,10 @@ from test_framework import generic_test, test_utils
 #       => O(nmlogm)
 # Space: O(n)
 def find_anagrams(dictionary: List[str]) -> List[List[str]]:
-    sorted_string_to_anagrams = collections.defaultdict(list)
+    d = collections.defaultdict(list)
     for s in dictionary:
-        # k = sorted string, v = original string
-        sorted_string_to_anagrams[''.join(sorted(s))].append(s)
-    return [
-        group for group in sorted_string_to_anagrams.values() if len(group) >= 2
-    ]
+        d[''.join(sorted(s))].append(s)
+    return [ l for l in d.values() if len(l) > 1 ]
 
 # Naive approach:
 # Sort a string, compare each string with all other strings to find matches
