@@ -1,6 +1,6 @@
 
 # iterative
-# Time: O(n), Space: O(1)
+# Time: O(logn), Space: O(1)
 def bsearch(t, A):
     L, M, U = 0, 0, len(A)-1
     while L <= U:
