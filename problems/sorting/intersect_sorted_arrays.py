@@ -42,6 +42,9 @@ def intersect_two_sorted_arraysB(A: List[int], B: List[int]) -> List[int]:
 def intersect_two_sorted_arraysC(A: List[int], B: List[int]) -> List[int]:
     return [a for i, a in enumerate(A) if (i == 0 or a != A[i-1]) and a in B]
 
+# fastest
+def intersect_two_sorted_arraysD(A: List[int], B: List[int]) -> List[int]:
+    return sorted(list(set(A) & set(B)))
 
 if __name__ == '__main__':
     print("Bruteforce O(mn):")
