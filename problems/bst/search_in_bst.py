@@ -7,9 +7,21 @@ from test_framework import generic_test
 #       def __init__(self, data=None, left=None, right=None):
 #               self.data, self.left, self.right = data, left, right
 
+# Time: O(h) Space: O(1)
+def search_bst(tree: BstNode, key: int) -> Optional[BstNode]:
+    it = tree
+    while it:
+        if it.data == key:
+            return it
+        elif it.data < key:
+            it = it.right
+        else:
+            it = it.left
+    return it
+
 # Time: O(h) where h is the height of the tree
 # Space: O(h)
-def search_bst(tree: BstNode, key: int) -> Optional[BstNode]:
+def search_bstr(tree: BstNode, key: int) -> Optional[BstNode]:
     if not tree or tree.data == key:
         return tree
     elif tree.data < key:
