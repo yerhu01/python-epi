@@ -2,8 +2,16 @@ from test_framework import generic_test
 
 # Count the number of bits set to 1
 
-# O(n) where n is number of bits to represent x
+# O(k) where k is number of set bits
 def count_bits(x: int) -> int:
+    result = 0
+    while x:
+        result += 1
+        x &= x - 1
+    return result
+
+# O(n) where n is number of bits to represent x
+def count_bitsA(x: int) -> int:
     num_bits = 0
     while x:
         num_bits += x & 1
